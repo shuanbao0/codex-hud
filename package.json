@@ -30,6 +30,8 @@
     "setup": "node dist/index.js setup",
     "configure": "node dist/index.js configure",
     "install:local": "node scripts/install-local.mjs",
+    "install:local:oneclick": "node scripts/install-local-oneclick.mjs",
+    "install:tag": "bash scripts/install-from-tag.sh",
     "install:marketplace": "node scripts/install-marketplace.mjs"
   },
   "keywords": [
