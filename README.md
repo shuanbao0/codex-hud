@@ -68,6 +68,12 @@ npm run install:tag
 # npm run install:tag -- --tag v0.1.1 --preset essential
 ```
 
+Uninstall:
+
+```bash
+node "$HOME/.codex/plugins/codex-hud/scripts/uninstall-local.mjs"
+```
+
 ## Install From Source (Main Branch)
 
 ```bash
@@ -75,6 +81,12 @@ git clone https://github.com/shuanbao0/codex-hud.git
 cd codex-hud
 npm ci
 npm run install:local:oneclick
+```
+
+Uninstall from cloned repo:
+
+```bash
+npm run uninstall:local
 ```
 
 ## Installation Paths
