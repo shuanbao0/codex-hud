@@ -1,0 +1,40 @@
+{
+  "name": "codex-hud",
+  "version": "0.1.0",
+  "description": "HUD-style status visibility for Codex sessions with setup, doctor, and status commands.",
+  "author": {
+    "name": "shuanbao0",
+    "email": "opensource@local.dev",
+    "url": "https://github.com/shuanbao0"
+  },
+  "homepage": "https://github.com/shuanbao0/codex-hud",
+  "repository": "https://github.com/shuanbao0/codex-hud",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "hud",
+    "statusline",
+    "developer-tools"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex HUD",
+    "shortDescription": "HUD-style session status for Codex.",
+    "longDescription": "Codex HUD brings model/context/usage/git/activity visibility to Codex via status line and command views.",
+    "developerName": "shuanbao0",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Status"
+    ],
+    "websiteURL": "https://github.com/shuanbao0/codex-hud",
+    "privacyPolicyURL": "https://opensource.org/licenses/MIT",
+    "termsOfServiceURL": "https://opensource.org/licenses/MIT",
+    "defaultPrompt": [
+      "Run codex-hud setup and configure a status line.",
+      "Show codex-hud status output for the current session.",
+      "Run codex-hud doctor and explain any issues."
+    ],
+    "brandColor": "#0EA5E9"
+  }
+}

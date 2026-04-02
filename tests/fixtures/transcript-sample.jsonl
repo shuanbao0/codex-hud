@@ -1,0 +1,6 @@
+{"timestamp":"2026-04-02T00:00:00.000Z","slug":"build-codex-hud","message":{"content":[{"type":"tool_use","id":"t1","name":"Read","input":{"file_path":"src/index.ts"}}]}}
+{"timestamp":"2026-04-02T00:00:05.000Z","message":{"content":[{"type":"tool_result","tool_use_id":"t1","is_error":false}]}}
+{"timestamp":"2026-04-02T00:00:10.000Z","type":"custom-title","customTitle":"Codex HUD Session"}
+{"timestamp":"2026-04-02T00:00:12.000Z","message":{"content":[{"type":"tool_use","id":"a1","name":"Task","input":{"subagent_type":"explorer","model":"gpt-5","description":"Scan source tree"}}]}}
+{"timestamp":"2026-04-02T00:00:20.000Z","message":{"content":[{"type":"tool_result","tool_use_id":"a1","is_error":false}]}}
+{"timestamp":"2026-04-02T00:00:25.000Z","message":{"content":[{"type":"tool_use","id":"todo1","name":"TodoWrite","input":{"todos":[{"content":"Build feature matrix","status":"in_progress"},{"content":"Write tests","status":"pending"}]}}]}}

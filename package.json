@@ -1,0 +1,48 @@
+{
+  "name": "codex-hud",
+  "version": "0.1.0",
+  "description": "Codex plugin and CLI toolkit for HUD-style status visibility",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "codex-hud": "dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "scripts/",
+    "skills/",
+    ".codex-plugin/",
+    ".agents/plugins/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm run typecheck",
+    "test": "npm run build && node --test",
+    "test:coverage": "npm run build && c8 --check-coverage --lines 85 --functions 85 --branches 70 --reporter=text --reporter=lcov node --test",
+    "dev:status": "node dist/index.js status",
+    "dev:doctor": "node dist/index.js doctor",
+    "setup": "node dist/index.js setup",
+    "configure": "node dist/index.js configure",
+    "install:local": "node scripts/install-local.mjs",
+    "install:marketplace": "node scripts/install-marketplace.mjs"
+  },
+  "keywords": [
+    "codex",
+    "plugin",
+    "hud",
+    "statusline",
+    "developer-tools"
+  ],
+  "author": "shuanbao0",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "c8": "^10.1.3",
+    "typescript": "^5.9.0"
+  }
+}
