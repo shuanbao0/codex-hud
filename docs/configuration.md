@@ -12,7 +12,7 @@ Codex HUD uses two config files:
 ```toml
 # codex-hud:statusline:start
 [tui]
-status_line = ["node", "/abs/path/to/dist/index.js", "status"]
+status_line = ["model-with-reasoning", "current-dir", "context-remaining"]
 # codex-hud:statusline:end
 ```
 

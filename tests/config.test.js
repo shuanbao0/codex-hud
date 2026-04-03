@@ -46,7 +46,7 @@ test('updateCodexStatusLine writes managed statusline block', async () => {
     assert.equal(result.wroteConfig, true);
     const content = await readFile(configPath, 'utf8');
     assert.match(content, /\[tui\]/);
-    assert.match(content, /status_line = \["node"/);
+    assert.match(content, /status_line = \["model-with-reasoning", "current-dir", "context-remaining"\]/);
     assert.match(content, /codex-hud:statusline:start/);
   } finally {
     await rm(dir, { recursive: true, force: true });
@@ -57,17 +57,18 @@ test('updateCodexStatusLine replaces managed block and appends when unmanaged ex
   const dir = await mkdtemp(path.join(tmpdir(), 'codex-hud-toml-managed-'));
   const configPath = path.join(dir, 'config.toml');
   try {
-    await writeFile(configPath, '[tui]\nstatus_line=["node","old.js"]\n', 'utf8');
+    await writeFile(configPath, '[tui]\nstatus_line=["current-dir"]\n', 'utf8');
     const first = updateCodexStatusLine('/tmp/new/index.js', configPath);
     assert.equal(first.wroteConfig, true);
     let content = await readFile(configPath, 'utf8');
     assert.match(content, /codex-hud:statusline:start/);
-    assert.match(content, /new\/index\.js/);
+    assert.match(content, /status_line = \["model-with-reasoning", "current-dir", "context-remaining"\]/);
 
     const second = updateCodexStatusLine('/tmp/replace/index.js', configPath);
     assert.equal(second.wroteConfig, true);
     content = await readFile(configPath, 'utf8');
-    assert.match(content, /replace\/index\.js/);
+    assert.equal((content.match(/codex-hud:statusline:start/g) ?? []).length, 1);
+    assert.match(content, /status_line = \["model-with-reasoning", "current-dir", "context-remaining"\]/);
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

@@ -5,6 +5,16 @@
 - Codex HUD prints a manual `status_line` TOML block.
 - Copy the block into `~/.codex/config.toml` under `[tui]`.
 
+## `Ignored invalid status line items` warning appears
+
+- This means `status_line` contains unsupported values for your Codex version.
+- Re-run setup from the latest codex-hud version:
+
+```bash
+npm run build
+node dist/index.js setup
+```
+
 ## No tool/agent/todo activity appears
 
 - Ensure stdin includes `transcript_path`.

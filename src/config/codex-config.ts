@@ -4,6 +4,7 @@ import { getCodexConfigPath } from './paths.js';
 
 const START_MARK = '# codex-hud:statusline:start';
 const END_MARK = '# codex-hud:statusline:end';
+const DEFAULT_STATUS_LINE_ITEMS = ['model-with-reasoning', 'current-dir', 'context-remaining'] as const;
 
 export type SetupResult = {
   configPath: string;
@@ -13,19 +14,15 @@ export type SetupResult = {
   manualTemplate: string;
 };
 
-export function buildStatusLineCommand(commandPath: string, runtime: 'node' | 'bun' = 'node'): string {
-  if (runtime === 'bun') {
-    return `["${escapeTomlString('bun')}", "--env-file", "/dev/null", "${escapeTomlString(commandPath)}", "status"]`;
-  }
-  return `["${escapeTomlString('node')}", "${escapeTomlString(commandPath)}", "status"]`;
+export function buildStatusLineCommand(_commandPath: string, _runtime: 'node' | 'bun' = 'node'): string {
+  return `[${DEFAULT_STATUS_LINE_ITEMS.map((item) => `"${escapeTomlString(item)}"`).join(', ')}]`;
 }
 
 export function updateCodexStatusLine(
   commandPath: string,
   configPath = getCodexConfigPath()
 ): SetupResult {
-  const runtime = 'node';
-  const statusLine = buildStatusLineCommand(commandPath, runtime);
+  const statusLine = buildStatusLineCommand(commandPath, 'node');
   const block = [
     START_MARK,
     '[tui]',
