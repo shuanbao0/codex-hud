@@ -4,7 +4,23 @@ import { getCodexConfigPath } from './paths.js';
 
 const START_MARK = '# codex-hud:statusline:start';
 const END_MARK = '# codex-hud:statusline:end';
-const DEFAULT_STATUS_LINE_ITEMS = ['model-with-reasoning', 'current-dir', 'context-remaining'] as const;
+const DEFAULT_STATUS_LINE_ITEMS = [
+  'model-name',
+  'model-with-reasoning',
+  'current-dir',
+  'project-root',
+  'context-remaining',
+  'context-used',
+  'five-hour-limit',
+  'weekly-limit',
+  'codex-version',
+  'context-window-size',
+  'used-tokens',
+  'total-input-tokens',
+  'total-output-tokens',
+  'session-id',
+  'fast-mode',
+] as const;
 
 export type SetupResult = {
   configPath: string;

@@ -46,7 +46,10 @@ test('updateCodexStatusLine writes managed statusline block', async () => {
     assert.equal(result.wroteConfig, true);
     const content = await readFile(configPath, 'utf8');
     assert.match(content, /\[tui\]/);
-    assert.match(content, /status_line = \["model-with-reasoning", "current-dir", "context-remaining"\]/);
+    assert.match(
+      content,
+      /status_line = \["model-name", "model-with-reasoning", "current-dir", "project-root", "context-remaining", "context-used", "five-hour-limit", "weekly-limit", "codex-version", "context-window-size", "used-tokens", "total-input-tokens", "total-output-tokens", "session-id", "fast-mode"\]/
+    );
     assert.match(content, /codex-hud:statusline:start/);
   } finally {
     await rm(dir, { recursive: true, force: true });
@@ -62,13 +65,19 @@ test('updateCodexStatusLine replaces managed block and appends when unmanaged ex
     assert.equal(first.wroteConfig, true);
     let content = await readFile(configPath, 'utf8');
     assert.match(content, /codex-hud:statusline:start/);
-    assert.match(content, /status_line = \["model-with-reasoning", "current-dir", "context-remaining"\]/);
+    assert.match(
+      content,
+      /status_line = \["model-name", "model-with-reasoning", "current-dir", "project-root", "context-remaining", "context-used", "five-hour-limit", "weekly-limit", "codex-version", "context-window-size", "used-tokens", "total-input-tokens", "total-output-tokens", "session-id", "fast-mode"\]/
+    );
 
     const second = updateCodexStatusLine('/tmp/replace/index.js', configPath);
     assert.equal(second.wroteConfig, true);
     content = await readFile(configPath, 'utf8');
     assert.equal((content.match(/codex-hud:statusline:start/g) ?? []).length, 1);
-    assert.match(content, /status_line = \["model-with-reasoning", "current-dir", "context-remaining"\]/);
+    assert.match(
+      content,
+      /status_line = \["model-name", "model-with-reasoning", "current-dir", "project-root", "context-remaining", "context-used", "five-hour-limit", "weekly-limit", "codex-version", "context-window-size", "used-tokens", "total-input-tokens", "total-output-tokens", "session-id", "fast-mode"\]/
+    );
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

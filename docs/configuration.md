@@ -12,7 +12,7 @@ Codex HUD uses two config files:
 ```toml
 # codex-hud:statusline:start
 [tui]
-status_line = ["model-with-reasoning", "current-dir", "context-remaining"]
+status_line = ["model-name", "model-with-reasoning", "current-dir", "project-root", "context-remaining", "context-used", "five-hour-limit", "weekly-limit", "codex-version", "context-window-size", "used-tokens", "total-input-tokens", "total-output-tokens", "session-id", "fast-mode"]
 # codex-hud:statusline:end
 ```
 
